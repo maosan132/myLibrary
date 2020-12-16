@@ -10,45 +10,50 @@
     <title>my library</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+  </head>
 
-<body>
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
-        <nav class="navbar navbar-light navbar-expand-md bg-primary">
-            <div class="container-fluid"><a class="navbar-brand text-monospace" href="#" style="font-size: 30px;color: #ffffff;filter: blur(0px) brightness(99%);">myLibrary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" type="button">Show form</button></div>
-    </div>
-    </nav>
-    <h3 class="pt-4">New book</h3>
-    <form>
+    <div class="container-fluid">
+      <nav class="navbar navbar-light navbar-expand-md bg-primary">
+        <div class="container-fluid"><a class="navbar-brand text-monospace" href="#" style="font-size: 30px;color: #ffffff;filter: blur(0px) brightness(99%);">myLibrary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" type="button">Show form</button></div>
+        </div>
+      </nav>
+      <section class="container">
+        <h3 class="pt-4">New book</h3>
+      <form>
         <div class="form-group d-flex align-items-xl-center"><label style="margin: 0px 20px 0px 0px;">Title</label><input class="form-control" type="text"></div>
         <div class="form-group d-flex align-items-xl-center"><label style="margin: 0px 20px 0px 0px;">Author</label><input class="form-control" type="text"></div>
         <div class="form-group d-flex align-items-xl-center"><label style="margin: 0px 20px 0px 0px;">Pages</label><input class="form-control" type="text"></div>
         <div class="form-group d-flex align-items-xl-center"><label style="margin: 0px 20px 0px 0px;">Read</label><input type="checkbox"></div>
-    </form>
-    <h3>All books</h3>
-    <div class="card-group">
+        <div class="form-group"><button class="btn btn-primary" type="submit">Submit </button></div>
+      </form>
+      <h3>All books</h3>
+      <div class="card-group">
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Delete book</button></div>
+          <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-warning" type="button">Delete book</button></div>
         </div>
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Delete book</button></div>
+          <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-warning" type="button">Delete book</button></div>
         </div>
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Delete book</button></div>
+          <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-warning" type="button">Delete book</button></div>
         </div>
-    </div>
+      </div>
+      </section>
+      
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>    <script src="main.js" async defer></script>    
+    <script src="main.js" async defer></script>
+  </body>
+</html>
