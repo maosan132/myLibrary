@@ -1,3 +1,11 @@
+body {
+  background-image: url('../img/library-bg.jpg')
+}
+
+section{
+  background-color: rgba(255,255,255,0.7)
+}
+
 h3 {
 }
 
