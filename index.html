@@ -19,10 +19,10 @@
     <div class="container-fluid">
       <nav class="navbar navbar-light navbar-expand-md bg-primary">
         <div class="container-fluid"><a class="navbar-brand text-monospace" href="#" style="font-size: 30px;color: #ffffff;filter: blur(0px) brightness(99%);">myLibrary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" type="button">Show form</button></div>
+          <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" data-toggle="collapse" data-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent" type="button">Show form</button></div>
         </div>
       </nav>
-      <section class="container">
+      <section class="container collapse" id="collapseContent">
         <h3 class="pt-4">New book</h3>
       <form>
         <div class="form-group d-flex align-items-xl-center"><label style="margin: 0px 20px 0px 0px;">Title</label><input class="form-control" type="text"></div>
