@@ -33,3 +33,12 @@ function talk(sound){
   console.log(sound)
 }
 talk("sound")
+
+function talk() {
+  console.log(this.sound)
+}
+
+let animal = {
+  talk: talk
+}
+animal.talk()e

@@ -2,6 +2,12 @@ body {
   background-image: url('../img/library-bg.jpg')
 }
 
+.text-monospace {
+  font-size: 30px;
+  color: white !important;
+  filter: blur(0px) brightness(99%);
+}
+
 section{
   background-color: rgba(255,255,255,0.7)
 }
@@ -9,3 +15,7 @@ section{
 h3 {
 }
 
+
+form label {
+  margin: 0px 20px 0px 0px;
+}

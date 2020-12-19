@@ -1,6 +1,6 @@
-function getEl(x) {return document.getElementById(x);} //shorter
-function createEl(x) {return document.createElement(x);} // shorter
-function querySelect(x) {return document.querySelector(x);} // shorter
+function getEl(x) {return document.getElementById(x)} //shorter
+function createEl(x) {return document.createElement(x)} // shorter
+function querySelect(x) {return document.querySelector(x)} // shorter
 
 let myLibrary = [
   {
@@ -23,9 +23,8 @@ function Book(title, author, pages, read){
   this.read = read
   this.info = function () {
     return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
-  };
-
-}
+  }
+};
  
 book.prototype.updateReadState = function updateReadState() {
   if (this.read == true) {
@@ -37,6 +36,7 @@ book.prototype.updateReadState = function updateReadState() {
 
 const name = querySelect("#name");
 const author = querySelect("#author");
+const pages = querySelect("#pages");
 const read = querySelect("#read");
 const form = querySelect("form").addEventListener("submit", function(e) {  
   addBookToLibrary();
@@ -44,5 +44,9 @@ const form = querySelect("form").addEventListener("submit", function(e) {
 
 function addBookToLibrary() {
   // do stuff here
+}
+
+function render(books) {
+
 }
 
