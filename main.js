@@ -1,52 +1,80 @@
-function getEl(x) {return document.getElementById(x)} //shorter
-function createEl(x) {return document.createElement(x)} // shorter
-function querySelect(x) {return document.querySelector(x)} // shorter
+/* 
+main file for My Library project
 
+First 6 expressions are shorter versions of commonly used functions: console.log, etc. Use it at will
+*/
+const log = e => console.log(e)
+const getIdEl = e => document.getElementById(e)
+const getClasEl = e => document.getElementsByClassName(e)
+const newEl = e => document.createElement(e)
+const newTxt = e => document.createTextNode(e)
+const querEl = e => document.querySeector(e)
+
+log('main.js loaded') //?
+//work with HTML elements
+const bookCreatorForm = getIdEl("collapseContent") //? 
+log(bookCreatorForm) //? 
+let newCard = newEl('div')
+let newCardTitle = newEl('h4')
+let newCard
+const currentLibrary = []
 let myLibrary = [
   {
     title: "The Parfum",
     author: "Patrick Suskind",
     pages: 354,
     read: true
-  },
-  {
-    title: "100 years of solitude",
-    author: "Gabriel García",
-    pages: 554,
-    read: false
-  }];
+  }]
 
-function Book(title, author, pages, read){
+const Book = function(title, author, pages, read){
   this.title = title
   this.author = author
   this.pages = pages
   this.read = read
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
-  }
 };
- 
-book.prototype.updateReadState = function updateReadState() {
-  if (this.read == true) {
-    this.read = false
-  }else {
-    this.read = true
-  }
+
+Book.prototype.info = () => `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
+
+const addBookToLibrary = function (book, library) {
+  library.push(book)
+  log(`${book.title} by ${book.author} was added to library
+  ${log(library)}`)
 }
 
-const name = querySelect("#name");
-const author = querySelect("#author");
-const pages = querySelect("#pages");
-const read = querySelect("#read");
-const form = querySelect("form").addEventListener("submit", function(e) {  
-  addBookToLibrary();
-});
+let secondBook = new Book('4323452345', '8757567', 24, true)
 
-function addBookToLibrary() {
-  // do stuff here
-}
+//log(firstBook.title)
+addBookToLibrary(secondBook, myLibrary)
+log(myLibrary)
 
-function render(books) {
+bookCreatorForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  log('form submitted') //not refreshing index.html for data retaining purposes
+  
+})
 
-}
+
+// Book.prototype.updateReadState = function updateReadState() {
+//   if (this.read == true) {
+//     this.read = false
+//   }else {
+//     this.read = true
+//   }
+// }
+
+// const name = querySelect("#name");
+// const author = querySelect("#author");
+// const pages = querySelect("#pages");
+// const read = querySelect("#read");
+// const form = querySelect("form").addEventListener("submit", function(e) {  
+//   addBookToLibrary();
+// });
+
+// function addBookToLibrary() {
+//   // do stuff here
+// }
+
+// function render(books) {
+
+// }
 

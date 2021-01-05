@@ -19,8 +19,9 @@
     <div class="container-fluid">
       <nav class="navbar navbar-light navbar-expand-md bg-primary">
         <div class="container-fluid"><a class="navbar-brand text-monospace" href="#">myLibrary</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" data-toggle="collapse" data-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent" type="button">Show form</button></div>
+          <div class="collapse navbar-collapse" id="navcol-1"><button class="btn btn-warning text-right d-xl-flex ml-auto justify-content-xl-end" data-toggle="collapse" data-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent" type="button">Toggle form</button></div>
         </div>
+        <div class="con"></div>
       </nav>
       <section class="container pb-4 border rounded mt-3">
         <form class="collapse pt-4" id="collapseContent" >
@@ -37,7 +38,11 @@
           <div class="card book-placeholder">
             <div class="card-body">
               <h4 class="card-title">Title</h4>
-              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-warning" type="button">Delete book</button></div>
+              <p class="author">Author</p>
+              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+              
+              <button class="btn btn-warning" type="button">Delete book</button>
+            </div>
           </div>
           <div class="card"> <!-- delete later -->
             <div class="card-body">
@@ -55,6 +60,6 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="main.js" async defer></script>
+    <script type="text/javascript" src="/main.js"></script>
   </body>
 </html>
