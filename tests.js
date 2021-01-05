@@ -42,3 +42,17 @@ let animal = {
   talk: talk
 }
 animal.talk()e
+
+const tests = [
+  //test word length expected
+  ['no word', '', undefined, 'N/A'],
+  ['short word', 'Short', undefined, 'Short'],
+  ['long word', 'Not so short', undefined, 'Not s...'],
+['custom length', 'Not short', 15, 'Not short'],
+] test.forEach((test) => {
+const [assertion, word, length, expected] = test;
+it(`supports ${assertion}`, () => {
+expect(maybeTruncate(word,
+length)).to.equal(expected)
+})
+})
