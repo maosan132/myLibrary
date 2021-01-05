@@ -24,7 +24,7 @@ newRadioButton.value = false
 
 
 
-
+//initial library
 
 const currentLibrary = [
   {
@@ -36,6 +36,7 @@ const currentLibrary = [
 ]
 let myLibrary = []
 
+//      Book constructor
 const Book = function(title, author, pages, description, read){
   this.title = title
   this.author = author
@@ -44,12 +45,11 @@ const Book = function(title, author, pages, description, read){
   this.readStatus = read
 };
 
+//      prototyping both info and read status toggler functions for Book
 Book.prototype.info = () => `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
-
-Book.prototype.toggleReadStatus = () {
+Book.prototype.toggleReadStatus = () =>{
   this.readStatus = !this.readStatus;
 };
-
 
 // Book.prototype.updateReadState = function updateReadState() {
 //   if (this.read == true) {
@@ -59,9 +59,9 @@ Book.prototype.toggleReadStatus = () {
 //   }
 // }
 
-const addCurrentBookToLibrary = () => {
-  
-}
+
+//      Functions to build library
+const addCurrentBookToLibrary = () => {}
 
 const addBookToLibrary = function (book, library) {
   library.push(book)
@@ -82,11 +82,11 @@ addBookToLibrary(secondBook, myLibrary)
 log(myLibrary)
 
 
-//Update page with lastest books
+//      Update page with lastest books
 
 
 
-//submit book event handler
+//      submit book event handler
 bookCreatorForm.addEventListener('submit', (e) => {
   e.preventDefault()
   log('form submitted') //not refreshing index.html for data retaining purposes
@@ -95,9 +95,12 @@ bookCreatorForm.addEventListener('submit', (e) => {
   const newPages = queSel("#pages").value
   const newDescription = queSel("#description").value
   const newRead = queSel("#read").value
-  let newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead)
+  let newBook = {} 
+  newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead)
   addBookToLibrary(newBook)
   updateBookView()
+  log(newAuthor)
+  
 })
 
 
