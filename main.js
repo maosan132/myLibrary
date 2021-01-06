@@ -14,7 +14,48 @@ const bookHolder = document.querySelector('.card')
 
 //      Initial library
 
-let myLibrary = []
+let myLibrary = [{
+  title: '1. Cien años de soledad',
+  author: 'Garcia Marquez, Gabriel',
+  pages: 800,
+  description: 'Tells the multi-generational story of the Buendía family, whose patriarch, José Arcadio Buendía, founded the town of Macondo.',
+  readStatus: true
+},
+{
+  title: '2. The Little Prince',
+  author: 'Antoine de Saint-Exupéry',
+  pages: 93,
+  description: 'Few stories are as widely read and as universally cherished by children and adults alike as The Little Prince.',
+  readStatus: true
+},
+{
+  title: '3. Practical ES6',
+  author: ' Aurelio De Rosa, Byron Houwens',
+  pages: 256,
+  description: 'This book provides an introduction to many of the powerful new JavaScript language features that were introduced in ECMAScript 2015',
+  readStatus: true
+},
+{
+  title: '4. 1984',
+  author: 'George Orwell',
+  pages: 400,
+  description: 'This book is like the dystopian Lord of the Rings, with its richly developed culture and economics.',
+  readStatus: true
+},
+{
+  title: '5. The Hate U Give',
+  author: 'Angie Thomas',
+  pages: 193,
+  description: 'A crucially important portrayal of the difficulties minorities face in our country every single day.',
+  readStatus: true
+},
+{
+  title: '6. Beginning Ruby: From Novice to Professional',
+  author: 'Peter Cooper',
+  pages: 585,
+  description: 'Learn the principles behind object-oriented programming and within a few chapters create a fully functional Ruby application.',
+  readStatus: true
+}]
 
 //      Book constructor
 const Book = function(title, author, pages, description, read){
@@ -107,14 +148,15 @@ const updateBookView = () => {
     counter++
     log('book number: ' + counter)
     
-const newCard = document.createElement('div')
-const newCardBody = document.createElement('div')
-const newBookTitle = document.createElement('h4')
-const newAuthor =document.createElement('p')
-const newPages = document.createElement('p')
-const newDescription = document.createElement('p')
-const newCheckbox = document.createElement('input')
-const deleteButton = document.createElement('button')
+    const newCard = document.createElement('div')
+    const newCardBody = document.createElement('div')
+    const newBookTitle = document.createElement('h4')
+    const newAuthor =document.createElement('p')
+    const newPages = document.createElement('p')
+    const newDescription = document.createElement('p')
+    const newCheckbox = document.createElement('input')
+    const deleteButton = document.createElement('button')
+
     // Assign attributes to HTML predefined elements
     newCard.className = 'card counter'
     newCard.setAttribute('data-index', counter);
@@ -124,17 +166,14 @@ const deleteButton = document.createElement('button')
     newPages.className = 'pages mt-0'
     newDescription.className = 'card-text'
     newCheckbox.setAttribute('type', 'checkbox')
-    deleteButton.className = 'btn btn-warning'
+    deleteButton.className = `btn btn-warning`
+    deleteButton.id = counter
     
     // Add data to new bootstrap card elements
     newBookTitle.textContent = book.title
-    log('title:' + book.title)
     newAuthor.textContent = 'Author: ' + book.author
-    log('author:' + book.author)
     newPages.textContent = 'Pages: ' + book.pages
-    log('pages:' + book.pages)
     newDescription.textContent = book.description
-    log('descripton:' + book.description)
     newCheckbox.value = false
     deleteButton.textContent = 'Delete'
 
@@ -151,14 +190,13 @@ const deleteButton = document.createElement('button')
     newCard.appendChild(newCardBody)
     libraryHolder.appendChild(newCard)
 
-//        Delete button event handler
-deleteButton.addEventListener('click', () => {
-  const index = myLibrary.findIndex(i => i === book)
-  myLibrary.splice(index, 1)
-  updateBookView()
-})
+    //Delete button event handler
+    deleteButton.addEventListener('click', (e) => {
+      myLibrary.splice(e.target.id-1, 1)
+      updateBookView()
+    })
   }
-
 }
 
-
+updateBookView()
+log(myLibrary[3])
