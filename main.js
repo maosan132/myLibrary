@@ -120,13 +120,6 @@ const validate = (title, author, pages, description) => {
     alertDiv.style.display = 'none'
     return true
   }
-
-//Clear values of form inputs
-document.querySelector('#title').value = ''
-document.querySelector('#author').value = ''
-document.querySelector('#pages').value = ''
-document.querySelector('#description').value = ''
-alertDiv.innerHTML = ''
 }
 
 //        Renders all books in page
