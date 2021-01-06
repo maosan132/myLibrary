@@ -2,7 +2,6 @@
 Main file for My Library project
 */
 //        For testing purposes
-
 const log = e => console.log(e) 
 
 //        HTML predefined elements
@@ -10,7 +9,7 @@ const log = e => console.log(e)
 const bookCreatorForm = document.getElementById('collapseContent') //? 
 const libraryHolder = document.querySelector('.card-columns')
 const alertDiv = document.getElementById("alert")
-
+const readStatusCheckbox = document.getElementById("read")
 //const bookHolder = document.querySelector('.card')
 
 //      Initial library
@@ -67,17 +66,14 @@ const Book = function(title, author, pages, description, read){
   this.readStatus = read
 };
 
-//      Prototyping both info and read status toggler functions for Book
+//      Prototyping functions for Book / for demonstration of the lesson only
 
 Book.prototype.info = () => `${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`
-
 Book.prototype.toggleReadStatus = () =>{
   this.readStatus = !this.readStatus;
 };
 
 //      Functions to build library
-
-const addCurrentBookToLibrary = () => {}
 
 const addBookToLibrary = function (book, library = myLibrary) {
   library.unshift(book)
@@ -93,15 +89,15 @@ bookCreatorForm.addEventListener('submit', (e) => {
   const newAuthor = document.querySelector('#author').value
   const newPages = document.querySelector('#pages').value
   const newDescription = document.querySelector('#description').value
-  const newRead = document.querySelector('#read').value
+  const newRead = document.querySelector('#read').checked
   let newBook = {} 
-  newBook = new Book(newTitle, newAuthor, newPages, newDescription)
+  newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead)
  
   //Validation of inputs
   if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
+    log('valid!')
     addBookToLibrary(newBook)
     bookCreatorForm.reset();
-
     updateBookView()
   }
 })
@@ -120,6 +116,8 @@ const validate = (title, author, pages, description) => {
   } else if (description === "") {
     alertDiv.innerHTML = "Please provide a short description."
     return false
+  }else {
+    return true
   }
 
 //Clear values of form inputs
@@ -129,8 +127,6 @@ document.querySelector('#pages').value = ''
 document.querySelector('#description').value = ''
 alertDiv.innerHTML = ''
 }
-
-
 
 //        Renders all books in page
 
@@ -171,7 +167,7 @@ const updateBookView = () => {
     newAuthor.textContent = 'Author: ' + book.author
     newPages.textContent = 'Pages: ' + book.pages
     newDescription.textContent = book.description
-    newCheckbox.checked = false
+    newCheckbox.checked = book.readStatus
     newLabel.textContent = `I have read it`
     deleteButton.textContent = 'Delete book'
 
