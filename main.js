@@ -6,55 +6,55 @@ Main file for My Library project
 const log = e => console.log(e) 
 const check1 = () => console.log('---------- check -----------')
 
-//        Work with HTML predefined elements
+//        HTML predefined elements
 
 const bookCreatorForm = document.getElementById('collapseContent') //? 
 const libraryHolder = document.querySelector('.card-columns')
-const bookHolder = document.querySelector('.card')
+//const bookHolder = document.querySelector('.card')
 
 //      Initial library
 
 let myLibrary = [{
-  title: '1. Cien años de soledad',
+  title: 'Cien años de soledad',
   author: 'Garcia Marquez, Gabriel',
   pages: 800,
   description: 'Tells the multi-generational story of the Buendía family, whose patriarch, José Arcadio Buendía, founded the town of Macondo.',
-  readStatus: true
+  readStatus: false
 },
 {
-  title: '2. The Little Prince',
+  title: 'The Little Prince',
   author: 'Antoine de Saint-Exupéry',
   pages: 93,
   description: 'Few stories are as widely read and as universally cherished by children and adults alike as The Little Prince.',
-  readStatus: true
+  readStatus: false
 },
 {
-  title: '3. Practical ES6',
+  title: 'Practical ES6',
   author: ' Aurelio De Rosa, Byron Houwens',
   pages: 256,
   description: 'This book provides an introduction to many of the powerful new JavaScript language features that were introduced in ECMAScript 2015',
-  readStatus: true
+  readStatus: false
 },
 {
-  title: '4. 1984',
+  title: '1984',
   author: 'George Orwell',
   pages: 400,
   description: 'This book is like the dystopian Lord of the Rings, with its richly developed culture and economics.',
-  readStatus: true
+  readStatus: false
 },
 {
-  title: '5. The Hate U Give',
+  title: 'The Hate U Give',
   author: 'Angie Thomas',
   pages: 193,
   description: 'A crucially important portrayal of the difficulties minorities face in our country every single day.',
-  readStatus: true
+  readStatus: false
 },
 {
-  title: '6. Beginning Ruby: From Novice to Professional',
+  title: 'Beginning Ruby: From Novice to Professional',
   author: 'Peter Cooper',
   pages: 585,
   description: 'Learn the principles behind object-oriented programming and within a few chapters create a fully functional Ruby application.',
-  readStatus: true
+  readStatus: false
 }]
 
 //      Book constructor
@@ -74,28 +74,14 @@ Book.prototype.toggleReadStatus = () =>{
   this.readStatus = !this.readStatus;
 };
 
-// Book.prototype.updateReadState = function updateReadState() {
-//   if (this.read == true) {
-//     this.read = false
-//   }else {
-//     this.read = true
-//   }
-// }
-
-
 //      Functions to build library
 
 const addCurrentBookToLibrary = () => {}
 
 const addBookToLibrary = function (book, library = myLibrary) {
-  library.push(book)
-  log(`${book.title} by ${book.author} was added to library
-  ${log(library)}`)
+  library.unshift(book)
+  log(`${book.title} by ${book.author} was added to library}`)
 }
-
-//      Update page with lastest books
-
-
 
 //      Submit new book event handler
 
@@ -115,20 +101,19 @@ bookCreatorForm.addEventListener('submit', (e) => {
   updateBookView()
 
   //Validation of inputs
-  //   if (newTitle.value === "") {
-  //     alert("Fill in a title.")
-  //     return false
-  // } else if (newAuthor === "") {
-  //     alert("Fill in an author.")
-  //     return false
-  // } else if (newPages === "") {
-  //     alert("Fill in pages with numbers.")
-  //     return false
-  // } else if (newDescription === "") {
-  //   alert("Fill in a description")
-  //   return false
-  // }
-
+    if (newTitle.value === "") {
+      alert("Fill in a title.")
+      return false
+  } else if (newAuthor === "") {
+      alert("Fill in an author.")
+      return false
+  } else if (newPages === "") {
+      alert("Fill in pages with numbers.")
+      return false
+  } else if (newDescription === "") {
+    alert("Fill in a description")
+    return false
+  }
 
   //Clear values of form inputs
   document.querySelector('#title').value = ''
@@ -136,7 +121,6 @@ bookCreatorForm.addEventListener('submit', (e) => {
   document.querySelector('#pages').value = ''
   document.querySelector('#description').value = ''
 })
-
 
 //        Renders all books in page
 
@@ -146,7 +130,6 @@ const updateBookView = () => {
   // Create a card with book data and elements
   for (book of myLibrary){
     counter++
-    log('book number: ' + counter)
     
     const newCard = document.createElement('div')
     const newCardBody = document.createElement('div')
@@ -155,6 +138,7 @@ const updateBookView = () => {
     const newPages = document.createElement('p')
     const newDescription = document.createElement('p')
     const newCheckbox = document.createElement('input')
+    const newLabel = document.createElement('label')
     const deleteButton = document.createElement('button')
 
     // Assign attributes to HTML predefined elements
@@ -166,16 +150,20 @@ const updateBookView = () => {
     newPages.className = 'pages mt-0'
     newDescription.className = 'card-text'
     newCheckbox.setAttribute('type', 'checkbox')
-    deleteButton.className = `btn btn-warning`
+    newCheckbox.id = counter
+    newLabel.className = ('readStatus ml-2')
+    newLabel.setAttribute('for', counter)
+    deleteButton.className = `btn btn-warning float-right`
     deleteButton.id = counter
     
     // Add data to new bootstrap card elements
-    newBookTitle.textContent = book.title
+    newBookTitle.textContent = `${counter}. ` + book.title
     newAuthor.textContent = 'Author: ' + book.author
     newPages.textContent = 'Pages: ' + book.pages
     newDescription.textContent = book.description
-    newCheckbox.value = false
-    deleteButton.textContent = 'Delete'
+    newCheckbox.checked = false
+    newLabel.textContent = `I have read it`
+    deleteButton.textContent = 'Delete book'
 
     // Append bootstrap elements to existing HTML DOM 
     const elementsArray = [newBookTitle,
@@ -183,12 +171,22 @@ const updateBookView = () => {
                           newPages,
                           newDescription,
                           newCheckbox,
+                          newLabel,
                           deleteButton]
     for(const elem of elementsArray) {
       newCardBody.appendChild(elem)
     }
     newCard.appendChild(newCardBody)
     libraryHolder.appendChild(newCard)
+
+    //checkbox event handler
+    newCheckbox.addEventListener('click', (e) => {
+      let readCheckbox = myLibrary[e.target.id-1]
+      newCheckbox.checked ? readCheckbox.readStatus = true : readCheckbox.readStatus = false
+      log(myLibrary[e.target.id-1].readStatus)
+    })
+
+
 
     //Delete button event handler
     deleteButton.addEventListener('click', (e) => {
@@ -199,4 +197,4 @@ const updateBookView = () => {
 }
 
 updateBookView()
-log(myLibrary[3])
+log(myLibrary)
