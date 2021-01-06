@@ -9,7 +9,7 @@ const check1 = () => console.log('---------- check -----------')
 //        Work with HTML predefined elements
 
 const bookCreatorForm = document.getElementById('collapseContent') //? 
-const libraryHolder = document.querySelector('.card-group')
+const libraryHolder = document.querySelector('.card-columns')
 const bookHolder = document.querySelector('.card')
 
 //      Initial library
