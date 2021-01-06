@@ -4,12 +4,13 @@ Main file for My Library project
 //        For testing purposes
 
 const log = e => console.log(e) 
-const check1 = () => console.log('---------- check -----------')
 
 //        HTML predefined elements
 
 const bookCreatorForm = document.getElementById('collapseContent') //? 
 const libraryHolder = document.querySelector('.card-columns')
+const alertDiv = document.getElementById("alert")
+
 //const bookHolder = document.querySelector('.card')
 
 //      Initial library
@@ -94,33 +95,42 @@ bookCreatorForm.addEventListener('submit', (e) => {
   const newDescription = document.querySelector('#description').value
   const newRead = document.querySelector('#read').value
   let newBook = {} 
-  
-  newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead)
-  addBookToLibrary(newBook)
-  bookCreatorForm.reset();
-  updateBookView()
-
+  newBook = new Book(newTitle, newAuthor, newPages, newDescription)
+ 
   //Validation of inputs
-    if (newTitle.value === "") {
-      alert("Fill in a title.")
-      return false
-  } else if (newAuthor === "") {
-      alert("Fill in an author.")
-      return false
-  } else if (newPages === "") {
-      alert("Fill in pages with numbers.")
-      return false
-  } else if (newDescription === "") {
-    alert("Fill in a description")
+  if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
+    addBookToLibrary(newBook)
+    bookCreatorForm.reset();
+
+    updateBookView()
+  }
+})
+
+const validate = (title, author, pages, description) => {
+  log(alertDiv)
+  if (title === "") {
+    alertDiv.innerHTML = "Please provide a title for this book."
+    return false
+  } else if (author=== "") {
+    alertDiv.innerHTML = "Please provide an author for this book."
+    return false
+  } else if (pages === "") {
+    alertDiv.innerHTML = "Please provide a number of pages."
+    return false
+  } else if (description === "") {
+    alertDiv.innerHTML = "Please provide a short description."
     return false
   }
 
-  //Clear values of form inputs
-  document.querySelector('#title').value = ''
-  document.querySelector('#author').value = ''
-  document.querySelector('#pages').value = ''
-  document.querySelector('#description').value = ''
-})
+//Clear values of form inputs
+document.querySelector('#title').value = ''
+document.querySelector('#author').value = ''
+document.querySelector('#pages').value = ''
+document.querySelector('#description').value = ''
+alertDiv.innerHTML = ''
+}
+
+
 
 //        Renders all books in page
 
@@ -179,19 +189,20 @@ const updateBookView = () => {
     newCard.appendChild(newCardBody)
     libraryHolder.appendChild(newCard)
 
-    //checkbox event handler
+    //Checkbox event handler
     newCheckbox.addEventListener('click', (e) => {
       let readCheckbox = myLibrary[e.target.id-1]
       newCheckbox.checked ? readCheckbox.readStatus = true : readCheckbox.readStatus = false
       log(myLibrary[e.target.id-1].readStatus)
     })
 
-
-
     //Delete button event handler
     deleteButton.addEventListener('click', (e) => {
-      myLibrary.splice(e.target.id-1, 1)
-      updateBookView()
+      let c = confirm('Are you sure?')
+      if (c) {
+        myLibrary.splice(e.target.id-1, 1)
+        updateBookView()
+      }
     })
   }
 }
