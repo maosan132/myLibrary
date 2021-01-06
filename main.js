@@ -1,7 +1,9 @@
 /*
 Main file for My Library project
 */
-//        For testing purposes
+/* eslint-disable no-alert, no-restricted-globals, no-console, func-names, no-restricted-syntax, no-undef, prefer-template,  */
+
+//        For testing purposes:
 const log = e => console.log(e);
 
 //        HTML predefined elements
@@ -93,30 +95,8 @@ const validate = (title, author, pages, description) => {
     alertDiv.style.display = 'none';
     return true;
   }
-  return null
+  return null;
 };
-
-//      Submit new book event handler
-
-bookCreatorForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const newTitle = document.querySelector('#title').value;
-  const newAuthor = document.querySelector('#author').value;
-  const newPages = document.querySelector('#pages').value;
-  const newDescription = document.querySelector('#description').value;
-  const newRead = document.querySelector('#read').checked;
-  let newBook = {};
-  newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead);
-
-  // Validation of inputs
-  if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
-    addBookToLibrary(newBook);
-    bookCreatorForm.reset();
-    updateBookView();
-    log('form submitted');
-    alertDiv.innerHTML = '';
-  }
-});
 
 //        Renders all books in page
 
@@ -193,6 +173,28 @@ const updateBookView = () => {
     });
   }
 };
+
+//      Submit new book event handler
+
+bookCreatorForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const newTitle = document.querySelector('#title').value;
+  const newAuthor = document.querySelector('#author').value;
+  const newPages = document.querySelector('#pages').value;
+  const newDescription = document.querySelector('#description').value;
+  const newRead = document.querySelector('#read').checked;
+  let newBook = {};
+  newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead);
+
+  // Validation of inputs
+  if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
+    addBookToLibrary(newBook);
+    bookCreatorForm.reset();
+    updateBookView();
+    log('form submitted');
+    alertDiv.innerHTML = '';
+  }
+});
 
 updateBookView();
 log(myLibrary);
