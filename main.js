@@ -83,20 +83,17 @@ const validate = (title, author, pages, description) => {
   alertDiv.style.display = 'block';
   if (title === '') {
     alertDiv.innerHTML = 'Please provide a title for this book.';
-
   } else if (author === '') {
     alertDiv.innerHTML = 'Please provide an author for this book.';
-
   } else if (pages === '') {
     alertDiv.innerHTML = 'Please provide a number of pages.';
-
   } else if (description === '') {
     alertDiv.innerHTML = 'Please provide a short description.';
-
   } else {
     alertDiv.style.display = 'none';
     return true;
   }
+  return null
 };
 
 //      Submit new book event handler
@@ -128,7 +125,7 @@ const updateBookView = () => {
   let counter = 0;
   // Create a card with book data and elements
   for (book of myLibrary) {
-    counter += counter;
+    counter = counter + 1;
 
     const newCard = document.createElement('div');
     const newCardBody = document.createElement('div');
