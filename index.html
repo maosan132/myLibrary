@@ -26,22 +26,22 @@
       <section class="container pb-4 border rounded mt-3">
         <form class="collapse pt-4" id="collapseContent" >
           <h3>New book</h3>
-          <div class="form-group d-flex align-items-xl-center"><label>Title</label><input class="form-control " id="name" type="text"></div>
+          <div class="form-group d-flex align-items-xl-center"><label>Title</label><input class="form-control " id="title" type="text"></div>
           <div class="form-group d-flex align-items-xl-center"><label>Author</label><input class="form-control" id="author" type="text"></div>
           <div class="form-group d-flex align-items-xl-center"><label>Pages</label><input class="form-control" id="pages" type="text"></div>
           <div class="form-group d-flex align-items-xl-center"><label>Description</label><textarea class="form-control" id="description" type="textarea" placeholder="Write a short description"></textarea></div>
           <div class="form-group d-flex align-items-xl-center"><label>Read</label><input type="checkbox" id="read"></div>
-          <div class="form-group"><button class="btn btn-primary" type="submit">Submit </button></div>
+          <div class="form-group"><button class="btn btn-primary" type="submit" id="addBook">Submit </button></div>
           <hr>
         </form>
         <h3 class="pt-2">All books</h3>
         <div class="card-group">
-          <div class="card book-placeholder">
+          <div class="card">
             <div class="card-body">
               <h4 class="card-title">Title dasdffgsdfsghsfdg</h4>
               <p class="author mb-1 ">Author: sdfgsdfg</p> <p class="pages mt-0">Pages: 258</p>
               <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            <button class="btn btn-warning" type="button">Delete book</button>
+              <button class="btn btn-warning" type="button">Delete book</button>
             </div>
           </div>
           <div class="card"> <!-- delete later -->
