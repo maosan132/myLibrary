@@ -21,6 +21,6 @@
     "build/",
     "assets/bootstrap/",
     "assets/js/",
-    "node/modules/"
+    "node_modules/"
   ]
 }
