@@ -19,6 +19,8 @@
   "ignorePatterns": [
     "dist/",
     "build/",
-    "assets/"
+    "assets/bootstrap/",
+    "assets/js/",
+    "node/modules/"
   ]
 }
