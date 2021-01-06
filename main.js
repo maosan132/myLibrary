@@ -94,15 +94,16 @@ bookCreatorForm.addEventListener('submit', (e) => {
  
   //Validation of inputs
   if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
-    log('valid!')
     addBookToLibrary(newBook)
     bookCreatorForm.reset();
     updateBookView()
     log('form submitted')
+    alertDiv.innerHTML = ''
   }
 })
 
 const validate = (title, author, pages, description) => {
+    alertDiv.style.display = 'block'
   if (title === "") {
     alertDiv.innerHTML = "Please provide a title for this book."
     return false
@@ -116,6 +117,7 @@ const validate = (title, author, pages, description) => {
     alertDiv.innerHTML = "Please provide a short description."
     return false
   }else {
+    alertDiv.style.display = 'none'
     return true
   }
 
