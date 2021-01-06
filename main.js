@@ -5,9 +5,9 @@ Main file for My Library project
 
 const log = e => console.log(e) 
 const check1 = () => console.log('---------- check -----------')
-const check2 = () => console.log('********** check ***********')
 
 //        Work with HTML predefined elements
+
 const bookCreatorForm = document.getElementById('collapseContent') //? 
 const libraryHolder = document.querySelector('.card-group')
 const bookHolder = document.querySelector('.card')
@@ -21,14 +21,7 @@ const newCheckbox = document.createElement('input')
 const deleteButton = document.createElement('button')
 
 //      Initial library
-const currentLibrary = [
-  {
-    title: 'The Parfum',
-    author: 'Patrick Suskind',
-    pages: 354,
-    read: true
-  }
-]
+
 let myLibrary = []
 
 //      Book constructor
@@ -62,17 +55,10 @@ Book.prototype.toggleReadStatus = () =>{
 const addCurrentBookToLibrary = () => {}
 
 const addBookToLibrary = function (book, library = myLibrary) {
-  library.push(book)
+  library.unshift(book)
   log(`${book.title} by ${book.author} was added to library
   ${log(library)}`)
 }
-
-let secondBook = new Book('4323452345', '8757567', 24, true)
-
-//log(firstBook.title)
-addBookToLibrary(secondBook, myLibrary)
-log(myLibrary)
-
 
 //      Update page with lastest books
 
@@ -94,7 +80,15 @@ bookCreatorForm.addEventListener('submit', (e) => {
   addBookToLibrary(newBook)
   bookCreatorForm.reset();
   updateBookView()
+
+  //Clear values of form inputs
+  document.querySelector('#title').value = ''
+  document.querySelector('#author').value = ''
+  document.querySelector('#pages').value = ''
+  document.querySelector('#description').value = ''
 })
+
+
 
 //        Delete button event handler
 deleteButton.addEventListener('click', () => {
@@ -107,11 +101,14 @@ deleteButton.addEventListener('click', () => {
 
 const updateBookView = () => {
   libraryHolder.innerHTML = ''
-
+  let counter = 0
   // Create a card with book data and elements
   for (book of myLibrary){
+    counter++
+    log('book number: ' + counter)
     // Assign attributes to HTML predefined elements
-    newCard.className = 'card'
+    newCard.className = 'card counter'
+    newCard.setAttribute('data-index', counter);
     newCardBody.className = 'card-body'
     newBookTitle.className = 'card-title'
     newAuthor.className = 'author mb-1'
@@ -123,9 +120,9 @@ const updateBookView = () => {
     // Add data to new bootstrap card elements
     newBookTitle.textContent = book.title
     log('title:' + book.title)
-    newAuthor.textContent = book.author
+    newAuthor.textContent = 'Author: ' + book.author
     log('author:' + book.author)
-    newPages.textContent = book.pages
+    newPages.textContent = 'Pages: ' + book.pages
     log('pages:' + book.pages)
     newDescription.textContent = book.description
     log('descripton:' + book.description)
@@ -139,26 +136,12 @@ const updateBookView = () => {
                           newDescription,
                           newCheckbox,
                           deleteButton]
-    // Iterate over Book card elements and append them to their inmediate parent
     for(const elem of elementsArray) {
       newCardBody.appendChild(elem)
     }
     newCard.appendChild(newCardBody)
     libraryHolder.appendChild(newCard)
-    // let colors = ['red', 'green', 'blue'];
 
-    // array.forEach((item, index) => {
-    //   console.log(item, index);
-    // });
-
-    // for (const color of colors){
-    //     console.log(color);
-    // }
-
-    document.querySelector('#title').value = ''
-    document.querySelector('#author').value = ''
-    document.querySelector('#pages').value = ''
-    document.querySelector('#description').value = ''
   }
 
 }
