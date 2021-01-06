@@ -8,13 +8,12 @@ const log = e => console.log(e);
 
 const bookCreatorForm = document.getElementById('collapseContent');
 const libraryHolder = document.querySelector('.card-columns');
-const alertDiv = document.getElementById("alert");
-const readStatusCheckbox = document.getElementById("read");
-//const bookHolder = document.querySelector('.card')
+const alertDiv = document.getElementById('alert');
+
 
 //      Initial library
 
-let myLibrary = [{
+const myLibrary = [{
   title: 'Cien años de soledad',
   author: 'Garcia Marquez, Gabriel',
   pages: 800,
@@ -58,7 +57,7 @@ let myLibrary = [{
 }];
 
 //      Book constructor
-const Book = function (title, author, pages, description, read){
+const Book = function (title, author, pages, description, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -69,7 +68,7 @@ const Book = function (title, author, pages, description, read){
 //      Prototyping functions for Book / for demonstration of the lesson only
 
 Book.prototype.info = () => `${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`;
-Book.prototype.toggleReadStatus = () =>{
+Book.prototype.toggleReadStatus = () => {
   this.readStatus = !this.readStatus;
 };
 
@@ -82,27 +81,27 @@ const addBookToLibrary = function (book, library = myLibrary) {
 
 const validate = (title, author, pages, description) => {
   alertDiv.style.display = 'block';
-  if (title === "") {
-    alertDiv.innerHTML = "Please provide a title for this book.";
-    return false;
-  } else if (author=== "") {
-    alertDiv.innerHTML = "Please provide an author for this book.";
-    return false;
-  } else if (pages === "") {
-    alertDiv.innerHTML = "Please provide a number of pages.";
-    return false;
-  } else if (description === "") {
-    alertDiv.innerHTML = "Please provide a short description.";
-    return false;
-  }else {
+  if (title === '') {
+    alertDiv.innerHTML = 'Please provide a title for this book.';
+
+  } else if (author === '') {
+    alertDiv.innerHTML = 'Please provide an author for this book.';
+
+  } else if (pages === '') {
+    alertDiv.innerHTML = 'Please provide a number of pages.';
+
+  } else if (description === '') {
+    alertDiv.innerHTML = 'Please provide a short description.';
+
+  } else {
     alertDiv.style.display = 'none';
     return true;
   }
-}
+};
 
 //      Submit new book event handler
 
-bookCreatorForm.addEventListener ('submit', (e) => {
+bookCreatorForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const newTitle = document.querySelector('#title').value;
   const newAuthor = document.querySelector('#author').value;
@@ -113,7 +112,7 @@ bookCreatorForm.addEventListener ('submit', (e) => {
   newBook = new Book(newTitle, newAuthor, newPages, newDescription, newRead);
 
   // Validation of inputs
-  if (validate (newTitle, newAuthor, newPages, newDescription, newRead)) {
+  if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
     addBookToLibrary(newBook);
     bookCreatorForm.reset();
     updateBookView();
@@ -129,12 +128,12 @@ const updateBookView = () => {
   let counter = 0;
   // Create a card with book data and elements
   for (book of myLibrary) {
-    counter++;
+    counter += counter;
 
     const newCard = document.createElement('div');
     const newCardBody = document.createElement('div');
     const newBookTitle = document.createElement('h4');
-    const newAuthor =document.createElement('p');
+    const newAuthor = document.createElement('p');
     const newPages = document.createElement('p');
     const newDescription = document.createElement('p');
     const newCheckbox = document.createElement('input');
@@ -153,49 +152,50 @@ const updateBookView = () => {
     newCheckbox.id = counter;
     newLabel.className = ('readStatus ml-2');
     newLabel.setAttribute('for', counter);
-    deleteButton.className = `btn btn-warning float-right`;
+    deleteButton.className = 'btn btn-warning float-right';
     deleteButton.id = counter;
 
     // Add data to new bootstrap card elements
-    newBookTitle.textContent = `${counter}. ` + book.title;
+    newBookTitle.textContent = counter + '. ' + book.title;
     newAuthor.textContent = 'Author: ' + book.author;
     newPages.textContent = 'Pages: ' + book.pages;
     newDescription.textContent = book.description;
     newCheckbox.checked = book.readStatus;
-    newLabel.textContent = `I have read it`;
+    newLabel.textContent = 'I have read it';
     deleteButton.textContent = 'Delete book';
 
     // Append bootstrap elements to existing HTML DOM
-    const elementsArray = [newBookTitle,
-                          newAuthor,
-                          newPages,
-                          newDescription,
-                          newCheckbox,
-                          newLabel,
-                          deleteButton];
-    for(const elem of elementsArray) {
+    const elementsArray = [
+      newBookTitle,
+      newAuthor,
+      newPages,
+      newDescription,
+      newCheckbox,
+      newLabel,
+      deleteButton];
+    for (const elem of elementsArray) {
       newCardBody.appendChild(elem);
-    };
+    }
     newCard.appendChild(newCardBody);
     libraryHolder.appendChild(newCard);
 
-    //Checkbox event handler
+    // Checkbox event handler
     newCheckbox.addEventListener('click', (e) => {
-      let readCheckbox = myLibrary[e.target.id-1];
+      const readCheckbox = myLibrary[e.target.id - 1];
       newCheckbox.checked ? readCheckbox.readStatus = true : readCheckbox.readStatus = false;
-      log(myLibrary[e.target.id-1].readStatus);
-    })
+      log(myLibrary[e.target.id - 1].readStatus);
+    });
 
-    //Delete button event handler
+    // Delete button event handler
     deleteButton.addEventListener('click', (e) => {
-      let c = confirm('Are you sure?');
+      const c = confirm('Are you sure?');
       if (c) {
-        myLibrary.splice(e.target.id-1, 1);
+        myLibrary.splice(e.target.id - 1, 1);
         updateBookView();
       }
     });
-  };
-}
+  }
+};
 
 updateBookView();
 log(myLibrary);
