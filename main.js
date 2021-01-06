@@ -11,14 +11,6 @@ const check1 = () => console.log('---------- check -----------')
 const bookCreatorForm = document.getElementById('collapseContent') //? 
 const libraryHolder = document.querySelector('.card-group')
 const bookHolder = document.querySelector('.card')
-const newCard = document.createElement('div')
-const newCardBody = document.createElement('div')
-const newBookTitle = document.createElement('h4')
-const newAuthor =document.createElement('p')
-const newPages = document.createElement('p')
-const newDescription = document.createElement('p')
-const newCheckbox = document.createElement('input')
-const deleteButton = document.createElement('button')
 
 //      Initial library
 
@@ -55,7 +47,7 @@ Book.prototype.toggleReadStatus = () =>{
 const addCurrentBookToLibrary = () => {}
 
 const addBookToLibrary = function (book, library = myLibrary) {
-  library.unshift(book)
+  library.push(book)
   log(`${book.title} by ${book.author} was added to library
   ${log(library)}`)
 }
@@ -81,6 +73,22 @@ bookCreatorForm.addEventListener('submit', (e) => {
   bookCreatorForm.reset();
   updateBookView()
 
+  //Validation of inputs
+  //   if (newTitle.value === "") {
+  //     alert("Fill in a title.")
+  //     return false
+  // } else if (newAuthor === "") {
+  //     alert("Fill in an author.")
+  //     return false
+  // } else if (newPages === "") {
+  //     alert("Fill in pages with numbers.")
+  //     return false
+  // } else if (newDescription === "") {
+  //   alert("Fill in a description")
+  //   return false
+  // }
+
+
   //Clear values of form inputs
   document.querySelector('#title').value = ''
   document.querySelector('#author').value = ''
@@ -88,14 +96,6 @@ bookCreatorForm.addEventListener('submit', (e) => {
   document.querySelector('#description').value = ''
 })
 
-
-
-//        Delete button event handler
-deleteButton.addEventListener('click', () => {
-  const index = myLibrary.findIndex(i => i === book)
-  myLibrary.splice(index, 1)
-  updateBookView()
-})
 
 //        Renders all books in page
 
@@ -106,6 +106,15 @@ const updateBookView = () => {
   for (book of myLibrary){
     counter++
     log('book number: ' + counter)
+    
+const newCard = document.createElement('div')
+const newCardBody = document.createElement('div')
+const newBookTitle = document.createElement('h4')
+const newAuthor =document.createElement('p')
+const newPages = document.createElement('p')
+const newDescription = document.createElement('p')
+const newCheckbox = document.createElement('input')
+const deleteButton = document.createElement('button')
     // Assign attributes to HTML predefined elements
     newCard.className = 'card counter'
     newCard.setAttribute('data-index', counter);
@@ -142,6 +151,12 @@ const updateBookView = () => {
     newCard.appendChild(newCardBody)
     libraryHolder.appendChild(newCard)
 
+//        Delete button event handler
+deleteButton.addEventListener('click', () => {
+  const index = myLibrary.findIndex(i => i === book)
+  myLibrary.splice(index, 1)
+  updateBookView()
+})
   }
 
 }
