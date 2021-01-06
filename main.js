@@ -84,7 +84,6 @@ const addBookToLibrary = function (book, library = myLibrary) {
 
 bookCreatorForm.addEventListener('submit', (e) => {
   e.preventDefault()
-  log('form submitted')
   const newTitle = document.querySelector('#title').value
   const newAuthor = document.querySelector('#author').value
   const newPages = document.querySelector('#pages').value
@@ -99,6 +98,7 @@ bookCreatorForm.addEventListener('submit', (e) => {
     addBookToLibrary(newBook)
     bookCreatorForm.reset();
     updateBookView()
+    log('form submitted')
   }
 })
 
