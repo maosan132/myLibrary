@@ -77,7 +77,7 @@ Book.prototype.toggleReadStatus = () =>{
 
 const addBookToLibrary = function (book, library = myLibrary) {
   library.unshift(book)
-  log(`${book.title} by ${book.author} was added to library}`)
+  log(`${book.title} by ${book.author} was added to library`)
 }
 
 //      Submit new book event handler
