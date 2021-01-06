@@ -103,7 +103,6 @@ bookCreatorForm.addEventListener('submit', (e) => {
 })
 
 const validate = (title, author, pages, description) => {
-  log(alertDiv)
   if (title === "") {
     alertDiv.innerHTML = "Please provide a title for this book."
     return false
