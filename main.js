@@ -1,8 +1,8 @@
 /*
 Main file for My Library project
 */
-/* eslint-disable no-alert, no-restricted-globals, no-console, func-names, no-restricted-syntax, no-undef, prefer-template,  */
-
+/* eslint-disable no-alert, no-restricted-globals, no-console, func-names, no-unused-expressions */
+/* eslint-disable no-restricted-syntax, no-undef, prefer-template, operator-assignment */
 //        For testing purposes:
 const log = e => console.log(e);
 
