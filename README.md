@@ -22,9 +22,11 @@ I made use of Object Oriented capabilities of Javascript, like prototyping and t
 ## Getting Started
 
 ```
-- Hit toggle form button to bring form
+- Go to live demo url
 
-- Fill fields wit book data
+- Hit toggle form button to show create book form
+
+- Fill fields with book data
 
 - Hit submit button
 
