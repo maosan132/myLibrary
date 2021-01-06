@@ -19,6 +19,8 @@ I made use of Object Oriented capabilities of Javascript, like prototyping and t
 
 [Live Demo Link](http://mauriciosantos.paternit.com/io/library/)
 
+## Getting Started
+
 ```
 - Hit toggle form button to bring form
 
