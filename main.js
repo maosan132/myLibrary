@@ -1,10 +1,8 @@
 /*
 Main file for My Library project
 */
-/* eslint-disable no-alert, no-restricted-globals, no-console, func-names, no-unused-expressions */
+/* eslint-disable no-alert, no-restricted-globals, func-names, no-unused-expressions */
 /* eslint-disable no-restricted-syntax, no-undef, prefer-template, operator-assignment */
-//        For testing purposes:
-const log = e => console.log(e);
 
 //        HTML predefined elements
 
@@ -19,7 +17,7 @@ const myLibrary = [{
   title: 'Cien años de soledad',
   author: 'Garcia Marquez, Gabriel',
   pages: 800,
-  description: 'Tells the multi-generational story of the Buendía family, whose patriarch, José Arcadio Buendía, founded the town of Macondo.',
+  description: 'Tells the multi-generational story of the Buendí9a family, whose patriarch, José Arcadio Buendía, founded the town of Macondo.',
   readStatus: false,
 },
 {
@@ -78,7 +76,6 @@ Book.prototype.toggleReadStatus = () => {
 
 const addBookToLibrary = function (book, library = myLibrary) {
   library.unshift(book);
-  log(`${book.title} by ${book.author} was added to library`);
 };
 
 const validate = (title, author, pages, description) => {
@@ -160,7 +157,6 @@ const updateBookView = () => {
     newCheckbox.addEventListener('click', (e) => {
       const readCheckbox = myLibrary[e.target.id - 1];
       newCheckbox.checked ? readCheckbox.readStatus = true : readCheckbox.readStatus = false;
-      log(myLibrary[e.target.id - 1].readStatus);
     });
 
     // Delete button event handler
@@ -191,10 +187,9 @@ bookCreatorForm.addEventListener('submit', (e) => {
     addBookToLibrary(newBook);
     bookCreatorForm.reset();
     updateBookView();
-    log('form submitted');
     alertDiv.innerHTML = '';
   }
 });
 
+//        Start the rendering of books
 updateBookView();
-log(myLibrary);
