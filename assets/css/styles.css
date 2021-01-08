@@ -1,0 +1,20 @@
+body {
+  background-image: url('../img/library-bg.jpg');
+}
+
+.text-monospace {
+  font-size: 30px;
+  color: white !important;
+}
+
+section {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+form label {
+  margin: 0 20px 0 0;
+}
+
+#alert {
+  display: none;
+}

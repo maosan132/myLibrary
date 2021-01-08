@@ -2,59 +2,44 @@
 
 # My Library
 
-> One paragraph statement about the project.
+> A library of books made with Javascript. Includes a form where users can add books with basic info about 
+it. This is the first app I make with Javascript, so any comments/improvements are totally welcomed.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./app-screenshot.jpg)
 
-Additional description about the project and its features.
+I made use of Object Oriented capabilities of Javascript, like prototyping and the 'this' keyword.
 
 ## Built With
 
 - HTML5
 - Bootstrap 4
-- JS
+- JS ES6
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
-
+[Live Demo Link](http://mauriciosantos.paternit.com/io/library/)
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+```
+- Go to live demo url
+
+- Hit toggle form button to show create book form
+
+- Fill fields with book data
+
+- Hit submit button
+
+- After created the book, you can go to library bellow and update books by deleting them or changing read status.
 
 
-To get a local copy up and running follow these simple example steps.
+```
 
-### Prerequisites
+👤 **Author**
 
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
-
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
+- Github: [@githubhandle](https://github.com/maosan132)
+- Twitter: [@twitterhandle](https://twitter.com/maosan132)
+- Linkedin: [linkedin](https://www.linkedin.com/in/mauricsantos/)
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
