@@ -74,9 +74,15 @@ Book.prototype.toggleReadStatus = () => {
 
 //      Functions to build library
 
-const addBookToLibrary = function (book, library = myLibrary) {
-  library.unshift(book);
-};
+const addBookToLibrary = ( function (){
+  const library = myLibrary;
+  const fill = function (book) {
+    library.unshift(book);
+  };
+  return { fill }
+})()
+
+
 
 const validate = (title, author, pages, description) => {
   alertDiv.style.display = 'block';
@@ -184,7 +190,7 @@ bookCreatorForm.addEventListener('submit', (e) => {
 
   // Validation of inputs
   if (validate(newTitle, newAuthor, newPages, newDescription, newRead)) {
-    addBookToLibrary(newBook);
+    addBookToLibrary.fill(newBook);
     bookCreatorForm.reset();
     updateBookView();
     alertDiv.innerHTML = '';
