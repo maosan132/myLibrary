@@ -56,15 +56,6 @@ const myLibrary = [{
   readStatus: false,
 }];
 
-//      Book constructor
-// const Book = function (title, author, pages, description, read) {
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.description = description;
-//   this.readStatus = read;
-// };
-
 class Book {
   constructor(title, author, pages, description, read) {
     this.title = title;
@@ -77,13 +68,12 @@ class Book {
   info() {
     `${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`;
   }
-  
+
   toggleReadStatus() {
     this.readStatus = !this.readStatus;
   }
 }
 
-Book.prototype.
 //      Functions to build library
 
 const addBookToLibrary = function (book, library = myLibrary) {
