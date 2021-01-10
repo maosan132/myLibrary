@@ -65,7 +65,7 @@ const myLibrary = [{
 //   this.readStatus = read;
 // };
 
-Class Book {
+class Book {
   constructor(title, author, pages, description, read) {
     this.title = title;
     this.author = author;
@@ -73,8 +73,17 @@ Class Book {
     this.description = description;
     this.readStatus = read;
   }
+
+  info() {
+    `${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`;
+  }
+  
+  toggleReadStatus() {
+    this.readStatus = !this.readStatus;
+  }
 }
 
+Book.prototype.
 //      Functions to build library
 
 const addBookToLibrary = function (book, library = myLibrary) {
