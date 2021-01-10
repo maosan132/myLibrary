@@ -57,20 +57,23 @@ const myLibrary = [{
 }];
 
 //      Book constructor
-const Book = function (title, author, pages, description, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.description = description;
-  this.readStatus = read;
-};
+// const Book = function (title, author, pages, description, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.description = description;
+//   this.readStatus = read;
+// };
 
-//      Prototyping functions for Book / for demonstration of the lesson only
-
-Book.prototype.info = () => `${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`;
-Book.prototype.toggleReadStatus = () => {
-  this.readStatus = !this.readStatus;
-};
+Class Book {
+  constructor(title, author, pages, description, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.description = description;
+    this.readStatus = read;
+  }
+}
 
 //      Functions to build library
 
